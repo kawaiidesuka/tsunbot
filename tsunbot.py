@@ -13,8 +13,11 @@ print "connecting to:"+server
 irc.connect((server, 6667))
 irc.send("USER "+ botnick +" "+ botnick +" "+ botnick +" :desu\n")
 irc.send("NICK "+ botnick +"\n")
-irc.send("PRIVMSG nickserv :iNOOPE\r\n")
-irc.send("PRIVMSG nickserv :identify NICE TRY\n")
+#ns auth
+f=open(".nspass")
+nspass=f:read()
+f:close()
+irc.send("PRIVMSG nickserv :identify"+nspass+"\n")
 time.sleep(20)
 morals = 1
 root = 0
